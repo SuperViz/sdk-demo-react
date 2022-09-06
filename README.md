@@ -16,7 +16,7 @@ cd /sdk-demo-react
 yarn
 ```
 
-## Add Developer Token to src/App.tsx
+## Add Developer Token to [src/App.tsx](https://github.com/SuperViz/sdk-demo-react/blob/main/src/App.tsx#L5)
 ```TypeScript
 const TOKEN = '<YOUR_TOKEN>'
 ```
