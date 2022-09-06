@@ -312,9 +312,9 @@
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
 "@sinclair/typebox@^0.24.1":
-  version "0.24.35"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.35.tgz#7b5ca127aefe3ed482bb60f874bebbe3143e82f5"
-  integrity sha512-iN6ehuDndiTiDz2F+Orv/+oHJR+PrGv+38oghCddpsW4YEZl5qyLsWxSwYUWrKEOfjpGtXDFW6scJtjpzSLeSw==
+  version "0.24.36"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.36.tgz#8d44cf34fac7226c61f57b174c0b4b47652a2f8f"
+  integrity sha512-KxQQnSP+5x+JbBbnz0ZwCK0KQ06Wsvt8eYCUsBkt+h80+iXaVJzfDQ9GmAcypfUk/HrQL+l1Hjz1Fjeznfs+Uw==
 
 "@superviz/immersive-core@^0.3.1":
   version "0.3.21"
@@ -323,10 +323,10 @@
   dependencies:
     debug "^4.3.4"
 
-"@superviz/sdk@^0.0.38":
-  version "0.0.38"
-  resolved "https://registry.yarnpkg.com/@superviz/sdk/-/sdk-0.0.38.tgz#14df53c5c788b8dcd94c37a2d8af6ea52cdc3fe0"
-  integrity sha512-4KLZS/kEQb7kBycLZ4HDOh2kLzxz06yYdKH7g0vrF1uitfB6HBrZeegNfukyjQ+wL6RxjciKgq3i5DLT3JWcrQ==
+"@superviz/sdk@^0.0.41":
+  version "0.0.41"
+  resolved "https://registry.yarnpkg.com/@superviz/sdk/-/sdk-0.0.41.tgz#6473d7553e93d6ac4222735fe241d30fce49d6cd"
+  integrity sha512-NaIIC5w3R9daZPZEeiwAf5lpQ/NKCxNRYVlM/dfNqUyg/90QQl/feY9BLFcChF1T5klY7GZIsub3Xh4NwhY1cQ==
   dependencies:
     "@superviz/immersive-core" "^0.3.1"
     "@types/jest" "^28.1.3"
