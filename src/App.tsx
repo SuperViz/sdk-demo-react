@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import './App.css'
-import SuperVizSdk, { MeetingEvent } from '@superviz/sdk'
+import SuperViz, { MeetingEvent } from '@superviz/sdk'
+import type { SuperVizSdk } from '@superviz/sdk'
 
-const TOKEN = '<YOUR_TOKEN>'
+const SUPERVIZ_DEVELOPER_TOKEN = import.meta.env.VITE_SUPERVIZ_DEVELOPER_TOKEN
 const PROPERTY_NAME = 'message'
 const ROOM_ID = 'dev-daily'
 const GROUP_ID = 'test_demo'
@@ -18,11 +19,11 @@ function App() {
   const [message, setMessage] = useState('')
   const [openSdk, setOpenSdk] = useState(false)
 
-  let sdk: any = null
+  let sdk: SuperVizSdk | null = null
 
   const initSdk = async () => {
     setOpenSdk(true)
-    sdk = await SuperVizSdk.init(TOKEN, {
+    const sdk = await SuperViz.init(SUPERVIZ_DEVELOPER_TOKEN, {
       userGroup: {
         id: GROUP_ID,
         name: GROUP_NAME,
@@ -36,25 +37,18 @@ function App() {
       roomId: ROOM_ID,
       shouldKickUsersOnHostLeave: true
     });
-    sdk?.subscribe(PROPERTY_NAME, onSyncPropertyChange);
-    sdk?.subscribe(MeetingEvent.MEETING_SAME_USER_ERROR, onSdkError);
-  }
-
-  const closeSdk = () => {
-    setOpenSdk(false)
-    sdk?.destroy()
-  }
-
-  const sendCustom = () => {
-    sdk.setSyncProperty(PROPERTY_NAME, message)
+    sdk.subscribe(PROPERTY_NAME, onSyncPropertyChange);
+    sdk.subscribe(MeetingEvent.MEETING_SAME_USER_ERROR, () => {
+      console.log('error')
+    });
   }
 
   const onSyncPropertyChange = (payload: SdkPayload) => {
     alert(`Message: ${payload}`)
   }
 
-  const onSdkError = (error: any) => {
-    console.log('onSdkError', error)
+  const sendCustom = () => {
+    sdk?.setSyncProperty(PROPERTY_NAME, message)
   }
 
   const handleUserIdChange = (event: any) => {
@@ -68,20 +62,19 @@ function App() {
   return (
     <div className="App">
       <h1>Superviz React Demo</h1>
-      {!openSdk && (
-
+      {openSdk && (
+        <div className="card">
+        <input type="text" value={message} placeholder="MESSAGE" onChange={(event) => setMessage(event.target.value)} />
+        <button onClick={() => sendCustom()}>
+          Send Custom Message
+        </button>
+        </div>
+      ) || (
         <div className="card">
           <input type="text" value={userId} placeholder="USER ID" onChange={handleUserIdChange} />
           <input type="text" value={userName} placeholder="USER NAME" onChange={handleUserNameChange} />
           <button onClick={() => initSdk()}>
             Init SDK
-          </button>
-        </div>
-      ) || (
-        <div className="card">
-          <input type="text" value={message} placeholder="MESSAGE" onChange={(event) => setMessage(event.target.value)} />
-          <button onClick={() => sendCustom()}>
-            Send Custom Message
           </button>
         </div>
       )}

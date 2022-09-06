@@ -16,9 +16,9 @@ cd /sdk-demo-react
 yarn
 ```
 
-## Add Developer Token to [src/App.tsx](https://github.com/SuperViz/sdk-demo-react/blob/main/src/App.tsx#L5)
-```TypeScript
-const TOKEN = '<YOUR_TOKEN>'
+## Create a .env and set VITE_SUPERVIZ_DEVELOPER_TOKEN variable like the [.env.example](https://github.com/SuperViz/sdk-demo-react/blob/main/.env.example)
+```bash
+VITE_SUPERVIZ_DEVELOPER_TOKEN=<YOUR_TOKEN>
 ```
 
 ## Run
